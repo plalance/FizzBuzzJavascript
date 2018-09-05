@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FizzBuzz</title>
+</head>
+<body>
+<p>de 0 a 100 retourne numéro sauf :</p>
+<p>Si multiple de 3 : retourne Fizz</p>
+<p>Si multiple de 5 : retourne Buzz</p>
+<p>Si multiple de 3 et de 5 : retourne FizzBuzz</p>
+<ul class="list">
+
+</ul>
+<script src="lib/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var li, combi, word;
+
+        // De 0 a 100
+        for (var i = 1; i < 101; i++){
+
+            combi = isMultiple3(i).toString()+isMultiple5(i).toString();
+
+            switch (combi){
+                // Multiple de 3 mais pas de 5
+                case 'truefalse':
+                    word = 'Fizz';
+                    break;
+                // Multiple de 5 et de 3
+                case 'truetrue':
+                    word = 'FizzBuzz';
+                    break;
+                // Multiple ni de 5 mais pas de 3
+                case 'falsetrue':
+                    word = 'Buzz';
+                    break;
+                // Multiple ni de 5 ni de 3
+                case 'falsefalse':
+                    word = i;
+                    break;
+            }
+
+            li = '<li>'+word+'</li>';
+            $('.list').append(li);
+
+        }
+
+        // Retourne Fizz si multiple de 3
+        function isMultiple3(nb) {
+            return Number.isInteger(nb/3);
+        }
+        // retourne Buzz Si multiple de 5
+        function isMultiple5(nb) {
+            return Number.isInteger(nb/5);
+        }
+    });
+</script>
+</body>
+</html>
